@@ -1,9 +1,14 @@
+import InvoicePreview from "./InvoicePreview";
 import fetchData from "./useTemplateView/fetchData";
 
 const TemplateView = async () => {
   const templateData = await fetchData();
-  console.log({ templateData });
-  return <div>TemplateView</div>;
+  const htmlCode = templateData?.body?.code;
+  return (
+    <div>
+      <InvoicePreview htmlCode={htmlCode} />
+    </div>
+  );
 };
 
 export default TemplateView;
