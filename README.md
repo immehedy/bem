@@ -6,7 +6,7 @@ First, run the command for pre-installing dependencies
 
 ```bash
 npm i
- # or
+# or
 yarn
 ```
 
@@ -22,7 +22,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-This project uses [`tailwind/css`] (https://tailwindcss.com/docs/installation) to customize the styling.
+This project uses `tailwind/css` (https://tailwindcss.com/docs/installation) to customize the styling.
 
 ## Deploy on Vercel
 
