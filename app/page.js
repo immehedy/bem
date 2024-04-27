@@ -44,6 +44,11 @@ const home = () => {
               isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
             }`}
           />
+          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <button className="bg-primary text-white font-bold py-2 px-4 rounded-md scale-95  hover:scale-100 transition-all duration-300">
+              Preview Template
+            </button>
+          </div>
           <div className="absolute inset-x-0 bottom-4 flex justify-center space-x-2">
             {images.map((_, index) => (
               <div
