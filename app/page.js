@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import withAuth from "./hoc/withAuth";
 
@@ -45,9 +46,11 @@ const home = () => {
             }`}
           />
           <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-            <button className="bg-primary text-white font-bold py-2 px-4 rounded-md scale-95  hover:scale-100 transition-all duration-300">
+            <Link
+              href="/template-view"
+              className="bg-primary text-white font-bold py-2 px-4 rounded-md scale-95  hover:scale-100 transition-all duration-300">
               Preview Template
-            </button>
+            </Link>
           </div>
           <div className="absolute inset-x-0 bottom-4 flex justify-center space-x-2">
             {images.map((_, index) => (

@@ -7,14 +7,12 @@ const SignInPage = () => {
   const { register, handleSubmit } = useForm();
 
   const [isLoading, setIsloading] = useState(false);
+  const PUBLIC_API = process.env.NEXT_PUBLIC_AUTH_API;
 
   const onSubmit = async (data) => {
     setIsloading(true);
     await axios
-      .post(
-        "https://market.vemate.com/api/v1/account/public/users/signin/",
-        data
-      )
+      .post(PUBLIC_API, data)
       .then(function (response) {
         localStorage.setItem("token", response?.data?.token);
         localStorage.setItem("info", JSON.stringify(response?.data));
