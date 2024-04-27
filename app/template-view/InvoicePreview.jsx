@@ -1,10 +1,19 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
+import Draggable from "react-draggable";
 
 const InvoicePreview = ({ htmlCode }) => {
   const [scale, setScale] = useState(1);
   const previewContainerRef = useRef(null);
   const previewContentRef = useRef(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const handleDrag = (e, data) => {
+    setPos({ x: data.x, y: data.y });
+  };
+  const handleReset = () => {
+    setScale(1);
+    setPos({ x: 0, y: 0 });
+  };
 
   useEffect(() => {
     const previewContainer = previewContainerRef.current;
@@ -36,25 +45,35 @@ const InvoicePreview = ({ htmlCode }) => {
 
   return (
     <div className="relative w-full h-screen flex flex-col items-center overflow-hidden">
-      <div className="absolute top-4 right-4">
+      <div className="absolute top-4 right-4 flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <button
+            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l "
+            onClick={handleZoomOut}>
+            -
+          </button>
+          <button
+            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
+            onClick={handleZoomIn}>
+            +
+          </button>
+        </div>
         <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-          onClick={handleZoomOut}>
-          -
-        </button>
-        <button
-          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r"
-          onClick={handleZoomIn}>
-          +
+          className="bg-primary text-white rounded-md p-2 hover:opacity-75"
+          onClick={handleReset}>
+          Reset
         </button>
       </div>
+
       <div ref={previewContainerRef} className="flex-grow overflow-hidden">
         <div
           ref={previewContentRef}
           className="transform-origin-top-left"
-          style={{ transform: `scale(${scale})` }}
-          dangerouslySetInnerHTML={{ __html: htmlCode }}
-        />
+          style={{ transform: `scale(${scale})` }}>
+          <Draggable onDrag={(e, data) => handleDrag(e, data)} position={pos}>
+            <div dangerouslySetInnerHTML={{ __html: htmlCode }} />
+          </Draggable>
+        </div>
       </div>
     </div>
   );

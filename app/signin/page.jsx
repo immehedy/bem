@@ -26,7 +26,7 @@ const SignInPage = () => {
   };
   return (
     <div className="container my-36 h-auto max-w-screen-xl p-4 md:p-6 2xl:p-10">
-      <div className="rounded-sm border-stroke   bg-white shadow-default ">
+      <div className="rounded-sm border-stroke   bg-gray-100 shadow-default ">
         <div className="flex flex-wrap items-center">
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="py-17.5 px-26 text-center">
